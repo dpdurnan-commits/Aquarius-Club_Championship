@@ -1,0 +1,29 @@
+{
+  "name": "@ccs/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest",
+    "test:run": "vitest --run",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@ccs/types": "*",
+    "@fastify/static": "^7.0.4",
+    "better-sqlite3": "^12.4.1",
+    "fastify": "^4.28.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^20.16.5",
+    "fast-check": "^3.22.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.1"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "club-championship-scoring",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Two-day, 18-holes-per-day golf Club Championship scoring tool",
+  "workspaces": [
+    "types",
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "start": "npm start --workspace @ccs/server",
+    "serve": "npm run build && npm start",
+    "dev": "npm run dev --workspace @ccs/server",
+    "test": "npm run test --workspaces --if-present",
+    "test:run": "npm run test:run --workspaces --if-present",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

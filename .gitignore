@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+.DS_Store
+
+# Railway / local env
+.env
+.env.*
+!.env.example

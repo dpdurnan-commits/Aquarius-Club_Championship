@@ -1,0 +1,1108 @@
+{
+  "pbtResults": {
+    "2.2 Write property test for handicap allocation correctness": {
+      "status": "passed",
+      "lastRunTimestamp": 1788629335814
+    },
+    "2.5 Write property test for Stableford points mapping": {
+      "status": "passed",
+      "lastRunTimestamp": 1788629560976
+    },
+    "2.7 Write property test for invalid gross yielding no computation": {
+      "status": "passed",
+      "lastRunTimestamp": 1788629797317
+    },
+    "3.2 Write property test for aggregate Stableford independent of NR": {
+      "status": "passed",
+      "lastRunTimestamp": 1788630306745
+    },
+    "4.3 Write property test for NR players unranked": {
+      "status": "passed",
+      "lastRunTimestamp": 1788630556519
+    },
+    "4.5 Write property test for cut decision correctness": {
+      "status": "passed",
+      "lastRunTimestamp": 1788630671045
+    },
+    "6.3 Write property test for configuration persistence round-trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1788630806577
+    },
+    "6.5 Write property test for independent concurrent cell writes": {
+      "status": "passed",
+      "lastRunTimestamp": 1788631132888
+    },
+    "7.3 Write property test for par validation range": {
+      "status": "passed",
+      "lastRunTimestamp": 1788631253668
+    },
+    "7.4 Write property test for stroke-index validation and uniqueness": {
+      "status": "passed",
+      "lastRunTimestamp": 1788631385554
+    },
+    "7.5 Write property test for course completeness predicate": {
+      "status": "passed",
+      "lastRunTimestamp": 1788631539044
+    },
+    "8.2 Write property test for player name validation": {
+      "status": "passed",
+      "lastRunTimestamp": 1788631808305
+    },
+    "9.2 Write property test for score value validation": {
+      "status": "passed",
+      "lastRunTimestamp": 1788632857751
+    },
+    "9.3 Write property test for cut players cannot receive Day 2 scores": {
+      "status": "passed",
+      "lastRunTimestamp": 1788632970775
+    },
+    "10.2 Write property test for Day 1 aggregate + relative-to-par over completed holes": {
+      "status": "passed",
+      "lastRunTimestamp": 1788633491871
+    },
+    "10.3 Write property test for Day 1 hole cell format": {
+      "status": "passed",
+      "lastRunTimestamp": 1788633616122
+    },
+    "10.5 Write property test for Day 1 NR rendering": {
+      "status": "passed",
+      "lastRunTimestamp": 1788633898436
+    },
+    "10.8 Write property test for Day 2 ordering": {
+      "status": "passed",
+      "lastRunTimestamp": 1788634318193
+    },
+    "10.10 Write property test for Day 2 combined cells and cumulative relative-to-par": {
+      "status": "passed",
+      "lastRunTimestamp": 1788634631183
+    },
+    "10.11 Write property test for Day 2 combined NR substitution": {
+      "status": "passed",
+      "lastRunTimestamp": 1788634798744
+    }
+  },
+  "executionHistory": {
+    "1. Scaffold the monorepo, tooling, and shared domain types": [
+      {
+        "executionId": "1d77926e-0156-4c7b-8381-99915852df91",
+        "chatSessionId": "sess_3f0ac5cd-a9a5-4b44-b749-d19dbf619a9c",
+        "timestamp": 1788556932592
+      },
+      {
+        "executionId": "1d77926e-0156-4c7b-8381-99915852df91",
+        "chatSessionId": "sess_3f0ac5cd-a9a5-4b44-b749-d19dbf619a9c",
+        "timestamp": 1788557498853
+      }
+    ],
+    "2.1 Implement handicap stroke allocation": [
+      {
+        "executionId": "ce4ddf4c-ac93-4f55-97da-d58a75850a32",
+        "chatSessionId": "sess_cd6b0cb4-2d3e-4789-b6ef-2d4b91683888",
+        "timestamp": 1788557573097
+      },
+      {
+        "executionId": "ce4ddf4c-ac93-4f55-97da-d58a75850a32",
+        "chatSessionId": "sess_cd6b0cb4-2d3e-4789-b6ef-2d4b91683888",
+        "timestamp": 1788557826562
+      }
+    ],
+    "2.4 Implement net strokes and Stableford points mapping": [
+      {
+        "executionId": "ce4ddf4c-ac93-4f55-97da-d58a75850a32",
+        "chatSessionId": "sess_cd6b0cb4-2d3e-4789-b6ef-2d4b91683888",
+        "timestamp": 1788557573918
+      },
+      {
+        "executionId": "ce4ddf4c-ac93-4f55-97da-d58a75850a32",
+        "chatSessionId": "sess_cd6b0cb4-2d3e-4789-b6ef-2d4b91683888",
+        "timestamp": 1788557827535
+      }
+    ],
+    "2. Implement the StablefordCalculator pure functions": [
+      {
+        "executionId": "ce4ddf4c-ac93-4f55-97da-d58a75850a32",
+        "chatSessionId": "sess_cd6b0cb4-2d3e-4789-b6ef-2d4b91683888",
+        "timestamp": 1788557828097
+      }
+    ],
+    "3.1 Implement completed-holes and aggregate helpers": [
+      {
+        "executionId": "e1cfc944-ca3d-4a33-b725-8243f4724dcc",
+        "chatSessionId": "sess_e9be10a5-fd69-4363-bb60-87677e7d6861",
+        "timestamp": 1788558144478
+      },
+      {
+        "executionId": "e1cfc944-ca3d-4a33-b725-8243f4724dcc",
+        "chatSessionId": "sess_e9be10a5-fd69-4363-bb60-87677e7d6861",
+        "timestamp": 1788558356125
+      }
+    ],
+    "3. Implement day aggregation helpers (pure)": [
+      {
+        "executionId": "e1cfc944-ca3d-4a33-b725-8243f4724dcc",
+        "chatSessionId": "sess_e9be10a5-fd69-4363-bb60-87677e7d6861",
+        "timestamp": 1788558356578
+      }
+    ],
+    "4.1 Implement standard competition ranking with ties": [
+      {
+        "executionId": "1e9360d0-894d-4975-929d-964f9a46b31d",
+        "chatSessionId": "sess_00a9d154-09f3-418b-9c12-2569731bcdb7",
+        "timestamp": 1788558608401
+      },
+      {
+        "executionId": "1e9360d0-894d-4975-929d-964f9a46b31d",
+        "chatSessionId": "sess_00a9d154-09f3-418b-9c12-2569731bcdb7",
+        "timestamp": 1788558729503
+      }
+    ],
+    "4.4 Implement cut evaluation": [
+      {
+        "executionId": "1e9360d0-894d-4975-929d-964f9a46b31d",
+        "chatSessionId": "sess_00a9d154-09f3-418b-9c12-2569731bcdb7",
+        "timestamp": 1788558609219
+      },
+      {
+        "executionId": "1e9360d0-894d-4975-929d-964f9a46b31d",
+        "chatSessionId": "sess_00a9d154-09f3-418b-9c12-2569731bcdb7",
+        "timestamp": 1788558730403
+      }
+    ],
+    "4. Implement the RankingAndCutService domain logic (pure)": [
+      {
+        "executionId": "1e9360d0-894d-4975-929d-964f9a46b31d",
+        "chatSessionId": "sess_00a9d154-09f3-418b-9c12-2569731bcdb7",
+        "timestamp": 1788558730567
+      }
+    ],
+    "5. Checkpoint - core scoring, ranking, and cut math": [
+      {
+        "executionId": "258fc666-c35e-4f82-bba2-20f60074bc6e",
+        "chatSessionId": "sess_432b1c04-ea9f-43c9-a45c-15c75489c1c5",
+        "timestamp": 1788558978468
+      },
+      {
+        "executionId": "258fc666-c35e-4f82-bba2-20f60074bc6e",
+        "chatSessionId": "sess_432b1c04-ea9f-43c9-a45c-15c75489c1c5",
+        "timestamp": 1788559065955
+      }
+    ],
+    "6.1 Create the SQLite schema and database bootstrap": [
+      {
+        "executionId": "b3fec9fa-5536-45de-8e39-b3824294cb65",
+        "chatSessionId": "sess_f029d6e0-0afe-4871-805e-572a0a9c4116",
+        "timestamp": 1788559140528
+      },
+      {
+        "executionId": "b3fec9fa-5536-45de-8e39-b3824294cb65",
+        "chatSessionId": "sess_f029d6e0-0afe-4871-805e-572a0a9c4116",
+        "timestamp": 1788559400420
+      }
+    ],
+    "6.2 Implement the Repository with CRUD and cell upsert": [
+      {
+        "executionId": "b3fec9fa-5536-45de-8e39-b3824294cb65",
+        "chatSessionId": "sess_f029d6e0-0afe-4871-805e-572a0a9c4116",
+        "timestamp": 1788559410436
+      },
+      {
+        "executionId": "b3fec9fa-5536-45de-8e39-b3824294cb65",
+        "chatSessionId": "sess_f029d6e0-0afe-4871-805e-572a0a9c4116",
+        "timestamp": 1788559675595
+      }
+    ],
+    "6. Implement the SQLite schema and repository layer": [
+      {
+        "executionId": "b3fec9fa-5536-45de-8e39-b3824294cb65",
+        "chatSessionId": "sess_f029d6e0-0afe-4871-805e-572a0a9c4116",
+        "timestamp": 1788559676211
+      }
+    ],
+    "7.1 Implement par and stroke-index validation and persistence": [
+      {
+        "executionId": "e53bb372-9dd9-46a8-825c-e16363e75791",
+        "chatSessionId": "sess_62c3ebce-ba5f-4cf9-b49f-a0fd5ddcb4c6",
+        "timestamp": 1788584789391
+      },
+      {
+        "executionId": "e53bb372-9dd9-46a8-825c-e16363e75791",
+        "chatSessionId": "sess_62c3ebce-ba5f-4cf9-b49f-a0fd5ddcb4c6",
+        "timestamp": 1788585079440
+      }
+    ],
+    "7.2 Implement course completeness predicate and gating": [
+      {
+        "executionId": "e53bb372-9dd9-46a8-825c-e16363e75791",
+        "chatSessionId": "sess_62c3ebce-ba5f-4cf9-b49f-a0fd5ddcb4c6",
+        "timestamp": 1788584790158
+      },
+      {
+        "executionId": "e53bb372-9dd9-46a8-825c-e16363e75791",
+        "chatSessionId": "sess_62c3ebce-ba5f-4cf9-b49f-a0fd5ddcb4c6",
+        "timestamp": 1788585080368
+      }
+    ],
+    "7. Implement the CourseSetupService": [
+      {
+        "executionId": "e53bb372-9dd9-46a8-825c-e16363e75791",
+        "chatSessionId": "sess_62c3ebce-ba5f-4cf9-b49f-a0fd5ddcb4c6",
+        "timestamp": 1788585081003
+      }
+    ],
+    "8.1 Implement player and handicap management": [
+      {
+        "executionId": "ceb3a2e6-fef8-4f1d-8f99-6ffded726ecf",
+        "chatSessionId": "sess_0b36255c-81d9-4e3f-b784-fb7e686c390a",
+        "timestamp": 1788585188031
+      },
+      {
+        "executionId": "ceb3a2e6-fef8-4f1d-8f99-6ffded726ecf",
+        "chatSessionId": "sess_0b36255c-81d9-4e3f-b784-fb7e686c390a",
+        "timestamp": 1788585323450
+      }
+    ],
+    "8.5 Implement Day 1 completion and reversal": [
+      {
+        "executionId": "ceb3a2e6-fef8-4f1d-8f99-6ffded726ecf",
+        "chatSessionId": "sess_0b36255c-81d9-4e3f-b784-fb7e686c390a",
+        "timestamp": 1788585324547
+      },
+      {
+        "executionId": "ceb3a2e6-fef8-4f1d-8f99-6ffded726ecf",
+        "chatSessionId": "sess_0b36255c-81d9-4e3f-b784-fb7e686c390a",
+        "timestamp": 1788585509444
+      }
+    ],
+    "8. Implement the CompetitionSetupService (players, handicaps, Day 1 completion/cut)": [
+      {
+        "executionId": "ceb3a2e6-fef8-4f1d-8f99-6ffded726ecf",
+        "chatSessionId": "sess_0b36255c-81d9-4e3f-b784-fb7e686c390a",
+        "timestamp": 1788585510394
+      }
+    ],
+    "9.1 Implement score submission with validation and CUT gating": [
+      {
+        "executionId": "41cdc3e8-af46-4b89-85b9-41efc5543859",
+        "chatSessionId": "sess_d4405bf7-144a-4cbb-96b0-faa11c90a1cd",
+        "timestamp": 1788585587342
+      },
+      {
+        "executionId": "41cdc3e8-af46-4b89-85b9-41efc5543859",
+        "chatSessionId": "sess_d4405bf7-144a-4cbb-96b0-faa11c90a1cd",
+        "timestamp": 1788585798144
+      }
+    ],
+    "9. Implement the ScoreEntryService": [
+      {
+        "executionId": "41cdc3e8-af46-4b89-85b9-41efc5543859",
+        "chatSessionId": "sess_d4405bf7-144a-4cbb-96b0-faa11c90a1cd",
+        "timestamp": 1788585798568
+      }
+    ],
+    "10.1 Implement Day 1 view assembly": [
+      {
+        "executionId": "80f27f74-4d75-4e22-b47d-73201d0339f2",
+        "chatSessionId": "sess_b51e92c1-3b76-48a6-b15b-0aeb6f21e75f",
+        "timestamp": 1788586127164
+      },
+      {
+        "executionId": "80f27f74-4d75-4e22-b47d-73201d0339f2",
+        "chatSessionId": "sess_b51e92c1-3b76-48a6-b15b-0aeb6f21e75f",
+        "timestamp": 1788586393080
+      }
+    ],
+    "10.7 Implement Day 2 view assembly": [
+      {
+        "executionId": "80f27f74-4d75-4e22-b47d-73201d0339f2",
+        "chatSessionId": "sess_b51e92c1-3b76-48a6-b15b-0aeb6f21e75f",
+        "timestamp": 1788586396414
+      },
+      {
+        "executionId": "80f27f74-4d75-4e22-b47d-73201d0339f2",
+        "chatSessionId": "sess_b51e92c1-3b76-48a6-b15b-0aeb6f21e75f",
+        "timestamp": 1788586573791
+      }
+    ],
+    "10. Implement the ScoresDisplayAssembler": [
+      {
+        "executionId": "80f27f74-4d75-4e22-b47d-73201d0339f2",
+        "chatSessionId": "sess_b51e92c1-3b76-48a6-b15b-0aeb6f21e75f",
+        "timestamp": 1788586573895
+      }
+    ],
+    "11. Checkpoint - persistence, services, and view assembly": [
+      {
+        "executionId": "52604d48-9aab-4f6e-8b51-f0d611a35477",
+        "chatSessionId": "sess_48a82073-1461-4a35-bd5f-d2c5f3f98cfa",
+        "timestamp": 1788586665627
+      },
+      {
+        "executionId": "52604d48-9aab-4f6e-8b51-f0d611a35477",
+        "chatSessionId": "sess_48a82073-1461-4a35-bd5f-d2c5f3f98cfa",
+        "timestamp": 1788586749465
+      }
+    ],
+    "12.1 Implement the EventBroker with sequence ids and replay buffer": [
+      {
+        "executionId": "dc685be2-b7d6-4e26-b384-7195510f977e",
+        "chatSessionId": "sess_3f974eff-04e7-4b25-85b1-515c85dc0407",
+        "timestamp": 1788586814470
+      },
+      {
+        "executionId": "dc685be2-b7d6-4e26-b384-7195510f977e",
+        "chatSessionId": "sess_3f974eff-04e7-4b25-85b1-515c85dc0407",
+        "timestamp": 1788586989734
+      }
+    ],
+    "12.3 Emit events from the domain services": [
+      {
+        "executionId": "dc685be2-b7d6-4e26-b384-7195510f977e",
+        "chatSessionId": "sess_3f974eff-04e7-4b25-85b1-515c85dc0407",
+        "timestamp": 1788586994279
+      },
+      {
+        "executionId": "dc685be2-b7d6-4e26-b384-7195510f977e",
+        "chatSessionId": "sess_3f974eff-04e7-4b25-85b1-515c85dc0407",
+        "timestamp": 1788587258785
+      }
+    ],
+    "12. Implement the in-process event broker": [
+      {
+        "executionId": "dc685be2-b7d6-4e26-b384-7195510f977e",
+        "chatSessionId": "sess_3f974eff-04e7-4b25-85b1-515c85dc0407",
+        "timestamp": 1788587259136
+      }
+    ],
+    "13.1 Wire up the Fastify server and dependency wiring": [
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788587362598
+      },
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788587699818
+      }
+    ],
+    "13.2 Implement course, player, and Day 1 endpoints": [
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788587703072
+      },
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788587899417
+      }
+    ],
+    "13.3 Implement score and view endpoints": [
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788587902581
+      },
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788588022257
+      }
+    ],
+    "13.4 Implement the SSE `/api/events` endpoint": [
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788588025773
+      },
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788588220980
+      }
+    ],
+    "13. Implement the REST API and SSE endpoint (Fastify)": [
+      {
+        "executionId": "895c9e4b-0af0-4673-8c57-f4d06ce396e5",
+        "chatSessionId": "sess_5074965f-2b70-4a57-8936-9e34a3d5ac95",
+        "timestamp": 1788588222207
+      }
+    ],
+    "14. Checkpoint - backend API and real-time layer": [
+      {
+        "executionId": "4e8e6a01-6feb-44a2-ba4e-40eb61e4a643",
+        "chatSessionId": "sess_61ea3e30-74cb-499c-9fb6-16d5bc27739d",
+        "timestamp": 1788588275927
+      },
+      {
+        "executionId": "4e8e6a01-6feb-44a2-ba4e-40eb61e4a643",
+        "chatSessionId": "sess_61ea3e30-74cb-499c-9fb6-16d5bc27739d",
+        "timestamp": 1788588344546
+      }
+    ],
+    "15.1 Implement the app shell, routing, and API client": [
+      {
+        "executionId": "4676e51a-9dac-445a-a94a-757e6a0689ad",
+        "chatSessionId": "sess_81a3a5c5-8961-4c7f-9c7f-7bde7e6933bc",
+        "timestamp": 1788588401014
+      },
+      {
+        "executionId": "4676e51a-9dac-445a-a94a-757e6a0689ad",
+        "chatSessionId": "sess_81a3a5c5-8961-4c7f-9c7f-7bde7e6933bc",
+        "timestamp": 1788588750104
+      }
+    ],
+    "15.2 Implement the SSE client hook with connection status and resync": [
+      {
+        "executionId": "4676e51a-9dac-445a-a94a-757e6a0689ad",
+        "chatSessionId": "sess_81a3a5c5-8961-4c7f-9c7f-7bde7e6933bc",
+        "timestamp": 1788588753817
+      },
+      {
+        "executionId": "4676e51a-9dac-445a-a94a-757e6a0689ad",
+        "chatSessionId": "sess_81a3a5c5-8961-4c7f-9c7f-7bde7e6933bc",
+        "timestamp": 1788589715920
+      }
+    ],
+    "15. Implement the React frontend shell and API/SSE clients": [
+      {
+        "executionId": "4676e51a-9dac-445a-a94a-757e6a0689ad",
+        "chatSessionId": "sess_81a3a5c5-8961-4c7f-9c7f-7bde7e6933bc",
+        "timestamp": 1788589716986
+      }
+    ],
+    "16.1 Implement Course Setup screen": [
+      {
+        "executionId": "4388875e-e59c-44e9-b252-b024237f1866",
+        "chatSessionId": "sess_a3c0826e-7459-4743-b9a8-bad4c96f7d71",
+        "timestamp": 1788626784213
+      },
+      {
+        "executionId": "4388875e-e59c-44e9-b252-b024237f1866",
+        "chatSessionId": "sess_a3c0826e-7459-4743-b9a8-bad4c96f7d71",
+        "timestamp": 1788627155186
+      }
+    ],
+    "16.2 Implement Competition Setup screen (players, handicaps, Day 1 complete)": [
+      {
+        "executionId": "4388875e-e59c-44e9-b252-b024237f1866",
+        "chatSessionId": "sess_a3c0826e-7459-4743-b9a8-bad4c96f7d71",
+        "timestamp": 1788626785182
+      },
+      {
+        "executionId": "6181ac07-0c69-4cca-9638-448eec36d593",
+        "chatSessionId": "sess_9dcfb225-c307-4362-a9ee-e046e05b1192",
+        "timestamp": 1788627399780
+      },
+      {
+        "executionId": "6181ac07-0c69-4cca-9638-448eec36d593",
+        "chatSessionId": "sess_9dcfb225-c307-4362-a9ee-e046e05b1192",
+        "timestamp": 1788627716608
+      }
+    ],
+    "16. Implement the Course Setup and Competition Setup UI": [
+      {
+        "executionId": "6181ac07-0c69-4cca-9638-448eec36d593",
+        "chatSessionId": "sess_9dcfb225-c307-4362-a9ee-e046e05b1192",
+        "timestamp": 1788627717008
+      }
+    ],
+    "17.1 Implement the mobile-friendly score entry screen": [
+      {
+        "executionId": "532b2c91-2ef0-4f11-acc8-cf6d44ef55f3",
+        "chatSessionId": "sess_79ab7bd5-5cbc-4774-8c61-3398f08ba545",
+        "timestamp": 1788627769655
+      },
+      {
+        "executionId": "532b2c91-2ef0-4f11-acc8-cf6d44ef55f3",
+        "chatSessionId": "sess_79ab7bd5-5cbc-4774-8c61-3398f08ba545",
+        "timestamp": 1788628006851
+      }
+    ],
+    "17. Implement the Score Entry UI": [
+      {
+        "executionId": "532b2c91-2ef0-4f11-acc8-cf6d44ef55f3",
+        "chatSessionId": "sess_79ab7bd5-5cbc-4774-8c61-3398f08ba545",
+        "timestamp": 1788628007287
+      }
+    ],
+    "18.1 Implement Day 1 and Day 2 view tables with day selection": [
+      {
+        "executionId": "a11777aa-dca4-4450-9393-3ddaa2447c61",
+        "chatSessionId": "sess_68350f5d-283f-44f8-8c9c-a6f1e3b85b63",
+        "timestamp": 1788628063455
+      },
+      {
+        "executionId": "a11777aa-dca4-4450-9393-3ddaa2447c61",
+        "chatSessionId": "sess_68350f5d-283f-44f8-8c9c-a6f1e3b85b63",
+        "timestamp": 1788628430172
+      }
+    ],
+    "18. Implement the Viewing_Display UI": [
+      {
+        "executionId": "a11777aa-dca4-4450-9393-3ddaa2447c61",
+        "chatSessionId": "sess_68350f5d-283f-44f8-8c9c-a6f1e3b85b63",
+        "timestamp": 1788628430509
+      }
+    ],
+    "19.1 Wire frontend to backend and add build integration": [
+      {
+        "executionId": "426f1cd9-968b-4485-9b5a-7262ff5181c5",
+        "chatSessionId": "sess_9e061f62-b3ad-468c-a907-19a121f9d579",
+        "timestamp": 1788628480339
+      },
+      {
+        "executionId": "426f1cd9-968b-4485-9b5a-7262ff5181c5",
+        "chatSessionId": "sess_9e061f62-b3ad-468c-a907-19a121f9d579",
+        "timestamp": 1788629121344
+      }
+    ],
+    "19. End-to-end integration and final wiring": [
+      {
+        "executionId": "426f1cd9-968b-4485-9b5a-7262ff5181c5",
+        "chatSessionId": "sess_9e061f62-b3ad-468c-a907-19a121f9d579",
+        "timestamp": 1788629121606
+      }
+    ],
+    "2.2 Write property test for handicap allocation correctness": [
+      {
+        "executionId": "ab4f55a3-c5e5-4f44-9951-1a08eef765ec",
+        "chatSessionId": "sess_326f6d94-e188-429d-885d-5954a03a3023",
+        "timestamp": 1788629251944
+      },
+      {
+        "executionId": "ab4f55a3-c5e5-4f44-9951-1a08eef765ec",
+        "chatSessionId": "sess_326f6d94-e188-429d-885d-5954a03a3023",
+        "timestamp": 1788629349639
+      }
+    ],
+    "2.3 Write property test for unavailable allocation inputs": [
+      {
+        "executionId": "0d814c61-0589-476c-8217-4d70fcd81429",
+        "chatSessionId": "sess_2c7eaea5-d3e7-4e55-8f43-7c054db6a365",
+        "timestamp": 1788629376094
+      },
+      {
+        "executionId": "0d814c61-0589-476c-8217-4d70fcd81429",
+        "chatSessionId": "sess_2c7eaea5-d3e7-4e55-8f43-7c054db6a365",
+        "timestamp": 1788629461340
+      }
+    ],
+    "2.5 Write property test for Stableford points mapping": [
+      {
+        "executionId": "a23da68c-31ac-49a9-9e2e-4c64b73af72c",
+        "chatSessionId": "sess_8711146f-9be2-4ef2-95f3-2ba3c36cc532",
+        "timestamp": 1788629500605
+      },
+      {
+        "executionId": "a23da68c-31ac-49a9-9e2e-4c64b73af72c",
+        "chatSessionId": "sess_8711146f-9be2-4ef2-95f3-2ba3c36cc532",
+        "timestamp": 1788629575130
+      }
+    ],
+    "2.6 Write property test for monotonicity in gross": [
+      {
+        "executionId": "dbca3f65-6a84-4f8a-8584-d89b906c19e9",
+        "chatSessionId": "sess_be42a25b-b861-4890-85c2-e5e1e6cfdf23",
+        "timestamp": 1788629609294
+      },
+      {
+        "executionId": "dbca3f65-6a84-4f8a-8584-d89b906c19e9",
+        "chatSessionId": "sess_be42a25b-b861-4890-85c2-e5e1e6cfdf23",
+        "timestamp": 1788629671222
+      }
+    ],
+    "2.7 Write property test for invalid gross yielding no computation": [
+      {
+        "executionId": "119edf5a-77ff-4abd-81e7-64908b82c714",
+        "chatSessionId": "sess_b87e6f6a-4433-40e6-b5de-7f83c68f5b9f",
+        "timestamp": 1788629735570
+      },
+      {
+        "executionId": "119edf5a-77ff-4abd-81e7-64908b82c714",
+        "chatSessionId": "sess_b87e6f6a-4433-40e6-b5de-7f83c68f5b9f",
+        "timestamp": 1788629819348
+      }
+    ],
+    "3.2 Write property test for aggregate Stableford independent of NR": [
+      {
+        "executionId": "96b6aaee-cf7c-4c21-85f1-cb4a1cfe61cb",
+        "chatSessionId": "sess_ce582c7f-7f72-4b15-907c-02e28fabd278",
+        "timestamp": 1788630210865
+      },
+      {
+        "executionId": "96b6aaee-cf7c-4c21-85f1-cb4a1cfe61cb",
+        "chatSessionId": "sess_ce582c7f-7f72-4b15-907c-02e28fabd278",
+        "timestamp": 1788630339444
+      }
+    ],
+    "4.2 Write property test for standard competition ranking": [
+      {
+        "executionId": "02ea056b-5221-4bb0-b5e9-68a542b68c49",
+        "chatSessionId": "sess_90512523-29ed-4730-a2f0-7aaf4b07a54b",
+        "timestamp": 1788630374352
+      },
+      {
+        "executionId": "02ea056b-5221-4bb0-b5e9-68a542b68c49",
+        "chatSessionId": "sess_90512523-29ed-4730-a2f0-7aaf4b07a54b",
+        "timestamp": 1788630483607
+      }
+    ],
+    "4.3 Write property test for NR players unranked": [
+      {
+        "executionId": "2ee93a34-8705-41bb-980d-eb83c624badc",
+        "chatSessionId": "sess_ba04a577-ee88-4900-b9a6-8f10ee548259",
+        "timestamp": 1788630501882
+      },
+      {
+        "executionId": "2ee93a34-8705-41bb-980d-eb83c624badc",
+        "chatSessionId": "sess_ba04a577-ee88-4900-b9a6-8f10ee548259",
+        "timestamp": 1788630568942
+      }
+    ],
+    "4.5 Write property test for cut decision correctness": [
+      {
+        "executionId": "ea85e29e-4ecb-4980-b022-a769ae5b86d6",
+        "chatSessionId": "sess_4855645d-7b27-47f3-af74-ceb271fb2921",
+        "timestamp": 1788630588716
+      },
+      {
+        "executionId": "ea85e29e-4ecb-4980-b022-a769ae5b86d6",
+        "chatSessionId": "sess_4855645d-7b27-47f3-af74-ceb271fb2921",
+        "timestamp": 1788630684606
+      }
+    ],
+    "6.3 Write property test for configuration persistence round-trip": [
+      {
+        "executionId": "a97a9a97-9950-4143-bbaf-0d6294eeeee5",
+        "chatSessionId": "sess_3817a7d5-14a9-4a5d-8e14-66839cc83d18",
+        "timestamp": 1788630710298
+      },
+      {
+        "executionId": "a97a9a97-9950-4143-bbaf-0d6294eeeee5",
+        "chatSessionId": "sess_3817a7d5-14a9-4a5d-8e14-66839cc83d18",
+        "timestamp": 1788630822335
+      }
+    ],
+    "6.4 Write property test for score cell last-write-wins": [
+      {
+        "executionId": "aa21fd25-d5be-460c-ae4c-0ca664d30b0a",
+        "chatSessionId": "sess_2046cb39-a38c-462b-90a2-fa4d037f4521",
+        "timestamp": 1788630873281
+      },
+      {
+        "executionId": "aa21fd25-d5be-460c-ae4c-0ca664d30b0a",
+        "chatSessionId": "sess_2046cb39-a38c-462b-90a2-fa4d037f4521",
+        "timestamp": 1788630999026
+      }
+    ],
+    "6.5 Write property test for independent concurrent cell writes": [
+      {
+        "executionId": "2cf09600-c216-4931-b9c1-931b32eeb708",
+        "chatSessionId": "sess_5d97be22-e708-4b0f-8412-a6b4165f2829",
+        "timestamp": 1788631021974
+      },
+      {
+        "executionId": "2cf09600-c216-4931-b9c1-931b32eeb708",
+        "chatSessionId": "sess_5d97be22-e708-4b0f-8412-a6b4165f2829",
+        "timestamp": 1788631146938
+      }
+    ],
+    "7.3 Write property test for par validation range": [
+      {
+        "executionId": "38b9cc66-4458-4a1b-94a2-90c38834b1fc",
+        "chatSessionId": "sess_930796e4-3ff2-47da-98c3-49c9f1f8b7c1",
+        "timestamp": 1788631165531
+      },
+      {
+        "executionId": "38b9cc66-4458-4a1b-94a2-90c38834b1fc",
+        "chatSessionId": "sess_930796e4-3ff2-47da-98c3-49c9f1f8b7c1",
+        "timestamp": 1788631268699
+      }
+    ],
+    "7.4 Write property test for stroke-index validation and uniqueness": [
+      {
+        "executionId": "b5d11808-b1d0-43a4-8a77-ea0bd5f809a8",
+        "chatSessionId": "sess_03eb78ac-738a-426b-a399-3722b9e0fab6",
+        "timestamp": 1788631303788
+      },
+      {
+        "executionId": "b5d11808-b1d0-43a4-8a77-ea0bd5f809a8",
+        "chatSessionId": "sess_03eb78ac-738a-426b-a399-3722b9e0fab6",
+        "timestamp": 1788631400249
+      }
+    ],
+    "7.5 Write property test for course completeness predicate": [
+      {
+        "executionId": "94e47e51-5fce-41a6-b966-8cec41a8d942",
+        "chatSessionId": "sess_1c9d68e7-de11-41a5-a3be-8156ebbe2ccb",
+        "timestamp": 1788631426858
+      },
+      {
+        "executionId": "94e47e51-5fce-41a6-b966-8cec41a8d942",
+        "chatSessionId": "sess_1c9d68e7-de11-41a5-a3be-8156ebbe2ccb",
+        "timestamp": 1788631566036
+      }
+    ],
+    "7.6 Write unit tests for 18-hole slot presence": [
+      {
+        "executionId": "f63ec50f-9782-4a00-a9c0-bd43465eab41",
+        "chatSessionId": "sess_357555d6-461a-4e89-b97a-126c268affdd",
+        "timestamp": 1788631605591
+      },
+      {
+        "executionId": "f63ec50f-9782-4a00-a9c0-bd43465eab41",
+        "chatSessionId": "sess_357555d6-461a-4e89-b97a-126c268affdd",
+        "timestamp": 1788631705475
+      }
+    ],
+    "8.2 Write property test for player name validation": [
+      {
+        "executionId": "70d9ec90-66a4-42fb-abd2-717842321417",
+        "chatSessionId": "sess_d3633bf5-7b8a-41aa-afc8-2fbf2bdd20be",
+        "timestamp": 1788631725382
+      },
+      {
+        "executionId": "70d9ec90-66a4-42fb-abd2-717842321417",
+        "chatSessionId": "sess_d3633bf5-7b8a-41aa-afc8-2fbf2bdd20be",
+        "timestamp": 1788631835304
+      }
+    ],
+    "8.3 Write property test for handicap validation and per-day independence": [
+      {
+        "executionId": "ead274eb-b64a-4597-82d9-7559242aaa45",
+        "chatSessionId": "sess_17dd749b-ee17-47e7-a3a8-690056f1f766",
+        "timestamp": 1788631905070
+      },
+      {
+        "executionId": "ead274eb-b64a-4597-82d9-7559242aaa45",
+        "chatSessionId": "sess_17dd749b-ee17-47e7-a3a8-690056f1f766",
+        "timestamp": 1788632001981
+      }
+    ],
+    "8.4 Write unit tests for persistence-failure handling": [
+      {
+        "executionId": "99e66bbc-274a-45ee-8947-7ad6ae7ac7f2",
+        "chatSessionId": "sess_48ceb7bc-ed5b-4d0b-b65d-72d52c68bac9",
+        "timestamp": 1788632044914
+      },
+      {
+        "executionId": "99e66bbc-274a-45ee-8947-7ad6ae7ac7f2",
+        "chatSessionId": "sess_48ceb7bc-ed5b-4d0b-b65d-72d52c68bac9",
+        "timestamp": 1788632149456
+      }
+    ],
+    "8.6 Write property test for cut value validation gating": [
+      {
+        "executionId": "cb93dbd2-e6b4-4b56-959f-b3d1d08dbebe",
+        "chatSessionId": "sess_4a56ae00-ccaf-413d-9bc3-a59ce73bc7b4",
+        "timestamp": 1788632168606
+      },
+      {
+        "executionId": "cb93dbd2-e6b4-4b56-959f-b3d1d08dbebe",
+        "chatSessionId": "sess_4a56ae00-ccaf-413d-9bc3-a59ce73bc7b4",
+        "timestamp": 1788632267392
+      }
+    ],
+    "8.7 Write property test for no cut before completion": [
+      {
+        "executionId": "166cc44f-89bf-4011-a4be-5eae2ccf0c7e",
+        "chatSessionId": "sess_b16f8622-9f8a-4f50-8d71-8da0cfc100d7",
+        "timestamp": 1788632292318
+      },
+      {
+        "executionId": "166cc44f-89bf-4011-a4be-5eae2ccf0c7e",
+        "chatSessionId": "sess_b16f8622-9f8a-4f50-8d71-8da0cfc100d7",
+        "timestamp": 1788632421187
+      }
+    ],
+    "8.8 Write property test for completion/reversal round-trip": [
+      {
+        "executionId": "5d00318f-276d-4426-95fa-2da98c198cee",
+        "chatSessionId": "sess_92479f6a-79f3-41ec-95a3-4659f75b0015",
+        "timestamp": 1788632447363
+      },
+      {
+        "executionId": "5d00318f-276d-4426-95fa-2da98c198cee",
+        "chatSessionId": "sess_92479f6a-79f3-41ec-95a3-4659f75b0015",
+        "timestamp": 1788632605627
+      }
+    ],
+    "8.9 Write unit test for mark-complete action presence": [
+      {
+        "executionId": "31c7f2ea-ad28-46dd-aa09-acf4322539b4",
+        "chatSessionId": "sess_826cdfb0-b27a-4688-91b4-e2f8ca25dc00",
+        "timestamp": 1788632636998
+      },
+      {
+        "executionId": "31c7f2ea-ad28-46dd-aa09-acf4322539b4",
+        "chatSessionId": "sess_826cdfb0-b27a-4688-91b4-e2f8ca25dc00",
+        "timestamp": 1788632717860
+      }
+    ],
+    "9.2 Write property test for score value validation": [
+      {
+        "executionId": "7dc1c116-f9b9-402a-a4d3-4db3dc60ff30",
+        "chatSessionId": "sess_ff5d93d4-fa04-4d10-8e31-2f3142cb26a1",
+        "timestamp": 1788632761665
+      },
+      {
+        "executionId": "7dc1c116-f9b9-402a-a4d3-4db3dc60ff30",
+        "chatSessionId": "sess_ff5d93d4-fa04-4d10-8e31-2f3142cb26a1",
+        "timestamp": 1788632872421
+      }
+    ],
+    "9.3 Write property test for cut players cannot receive Day 2 scores": [
+      {
+        "executionId": "c8507834-d0f1-44a3-b29a-2f3042224149",
+        "chatSessionId": "sess_f444178d-353f-470d-8d97-8a60f697ed60",
+        "timestamp": 1788632901420
+      },
+      {
+        "executionId": "c8507834-d0f1-44a3-b29a-2f3042224149",
+        "chatSessionId": "sess_f444178d-353f-470d-8d97-8a60f697ed60",
+        "timestamp": 1788632984097
+      }
+    ],
+    "9.4 Write unit test for score-submit timeout handling": [
+      {
+        "executionId": "7d76de04-b487-458a-a266-2c04a88cb1de",
+        "chatSessionId": "sess_2b9da4a3-1eb5-481a-9cbf-5d89de8aede1",
+        "timestamp": 1788633019017
+      },
+      {
+        "executionId": "7d76de04-b487-458a-a266-2c04a88cb1de",
+        "chatSessionId": "sess_2b9da4a3-1eb5-481a-9cbf-5d89de8aede1",
+        "timestamp": 1788633339341
+      }
+    ],
+    "10.2 Write property test for Day 1 aggregate + relative-to-par over completed holes": [
+      {
+        "executionId": "ffc90af8-3435-465e-8a14-0ab52c941dca",
+        "chatSessionId": "sess_23e99783-0330-42d8-b792-e49f041bae01",
+        "timestamp": 1788633370147
+      },
+      {
+        "executionId": "ffc90af8-3435-465e-8a14-0ab52c941dca",
+        "chatSessionId": "sess_23e99783-0330-42d8-b792-e49f041bae01",
+        "timestamp": 1788633507499
+      }
+    ],
+    "10.3 Write property test for Day 1 hole cell format": [
+      {
+        "executionId": "d6550533-2bd4-4098-8fc9-0973cca34efe",
+        "chatSessionId": "sess_2c34aabf-7151-411b-8607-b193636ed852",
+        "timestamp": 1788633528975
+      },
+      {
+        "executionId": "d6550533-2bd4-4098-8fc9-0973cca34efe",
+        "chatSessionId": "sess_2c34aabf-7151-411b-8607-b193636ed852",
+        "timestamp": 1788633638674
+      }
+    ],
+    "10.4 Write property test for Day 1 aggregate cell format with position": [
+      {
+        "executionId": "c4eb5168-53c0-49f4-b429-9ca195e508d4",
+        "chatSessionId": "sess_4e74b508-94a2-4192-b010-554b09068ff4",
+        "timestamp": 1788633656729
+      },
+      {
+        "executionId": "c4eb5168-53c0-49f4-b429-9ca195e508d4",
+        "chatSessionId": "sess_4e74b508-94a2-4192-b010-554b09068ff4",
+        "timestamp": 1788633782530
+      }
+    ],
+    "10.5 Write property test for Day 1 NR rendering": [
+      {
+        "executionId": "b4c5f88e-2dd0-444c-8db7-475813ced262",
+        "chatSessionId": "sess_ed667cba-990f-4c40-ae7b-bedfb0fe1e97",
+        "timestamp": 1788633801994
+      },
+      {
+        "executionId": "b4c5f88e-2dd0-444c-8db7-475813ced262",
+        "chatSessionId": "sess_ed667cba-990f-4c40-ae7b-bedfb0fe1e97",
+        "timestamp": 1788633924350
+      }
+    ],
+    "10.6 Write unit tests for Day 1 header and empty-state rendering": [
+      {
+        "executionId": "340d50e6-8eb3-465c-a752-a5ac50ff88bb",
+        "chatSessionId": "sess_6ee9ab77-413a-4dc4-9c1a-b7af15904c4d",
+        "timestamp": 1788633990374
+      },
+      {
+        "executionId": "340d50e6-8eb3-465c-a752-a5ac50ff88bb",
+        "chatSessionId": "sess_6ee9ab77-413a-4dc4-9c1a-b7af15904c4d",
+        "timestamp": 1788634102081
+      }
+    ],
+    "10.8 Write property test for Day 2 ordering": [
+      {
+        "executionId": "847ece12-439d-4203-ad6c-9a60982e6309",
+        "chatSessionId": "sess_d37dca5a-0aaa-4700-a1fe-baa6573ddb1b",
+        "timestamp": 1788634185768
+      },
+      {
+        "executionId": "847ece12-439d-4203-ad6c-9a60982e6309",
+        "chatSessionId": "sess_d37dca5a-0aaa-4700-a1fe-baa6573ddb1b",
+        "timestamp": 1788634332912
+      }
+    ],
+    "10.9 Write property test for Day 2 hole cell format": [
+      {
+        "executionId": "b56a816f-8e14-4230-9c62-a2aefd149a83",
+        "chatSessionId": "sess_3cd665e6-97e9-4a1b-9e1f-ca51b528fffd",
+        "timestamp": 1788634363119
+      },
+      {
+        "executionId": "b56a816f-8e14-4230-9c62-a2aefd149a83",
+        "chatSessionId": "sess_3cd665e6-97e9-4a1b-9e1f-ca51b528fffd",
+        "timestamp": 1788634457692
+      }
+    ],
+    "10.10 Write property test for Day 2 combined cells and cumulative relative-to-par": [
+      {
+        "executionId": "91c6bceb-2a78-4afc-bb40-7ba51c23df70",
+        "chatSessionId": "sess_9f33fd99-8a4d-4f35-a248-21450683092b",
+        "timestamp": 1788634495460
+      },
+      {
+        "executionId": "91c6bceb-2a78-4afc-bb40-7ba51c23df70",
+        "chatSessionId": "sess_9f33fd99-8a4d-4f35-a248-21450683092b",
+        "timestamp": 1788634649759
+      }
+    ],
+    "10.11 Write property test for Day 2 combined NR substitution": [
+      {
+        "executionId": "cb33196b-37b1-4ea9-979c-621328a82a65",
+        "chatSessionId": "sess_e32e3422-d927-4cd5-a554-ae48574ade29",
+        "timestamp": 1788634680104
+      },
+      {
+        "executionId": "cb33196b-37b1-4ea9-979c-621328a82a65",
+        "chatSessionId": "sess_e32e3422-d927-4cd5-a554-ae48574ade29",
+        "timestamp": 1788634889847
+      }
+    ],
+    "10.12 Write property test for CUT player Day 2 rendering": [
+      {
+        "executionId": "340c12df-bb10-4e5b-8162-9c1034bc9416",
+        "chatSessionId": "sess_5c9a87d7-e342-4971-bf8d-a3c7f515e43c",
+        "timestamp": 1788634920109
+      },
+      {
+        "executionId": "340c12df-bb10-4e5b-8162-9c1034bc9416",
+        "chatSessionId": "sess_5c9a87d7-e342-4971-bf8d-a3c7f515e43c",
+        "timestamp": 1788635031221
+      }
+    ],
+    "2.8 Write unit tests for boundary handicaps and worked Stableford examples": [
+      {
+        "executionId": "97523793-413c-447e-9af9-7f0eeaaf6f12",
+        "chatSessionId": "sess_f00283cb-259a-4398-aa1e-f95373e0721a",
+        "timestamp": 1788635061219
+      },
+      {
+        "executionId": "97523793-413c-447e-9af9-7f0eeaaf6f12",
+        "chatSessionId": "sess_f00283cb-259a-4398-aa1e-f95373e0721a",
+        "timestamp": 1788635162080
+      }
+    ],
+    "10.13 Write unit test for Day 2 header content/order": [
+      {
+        "executionId": "a7f374a7-d5ac-45d6-8c27-5a75fbc51c4b",
+        "chatSessionId": "sess_9a986e54-943a-4ce8-af6d-fe9dcad245f5",
+        "timestamp": 1788635225238
+      },
+      {
+        "executionId": "a7f374a7-d5ac-45d6-8c27-5a75fbc51c4b",
+        "chatSessionId": "sess_9a986e54-943a-4ce8-af6d-fe9dcad245f5",
+        "timestamp": 1788635532448
+      }
+    ],
+    "12.2 Write unit tests for broker fan-out and replay": [
+      {
+        "executionId": "e64deb13-ff75-4a96-9444-a702753da32f",
+        "chatSessionId": "sess_1927244a-c433-4c40-add0-1271b7a948aa",
+        "timestamp": 1788635687655
+      },
+      {
+        "executionId": "e64deb13-ff75-4a96-9444-a702753da32f",
+        "chatSessionId": "sess_1927244a-c433-4c40-add0-1271b7a948aa",
+        "timestamp": 1788635797713
+      }
+    ],
+    "13.5 Write API-level unit/integration tests for endpoints": [
+      {
+        "executionId": "901f68ac-9acb-4578-9301-0d704936763c",
+        "chatSessionId": "sess_c14195d6-4cc9-4c34-845b-238d72ef8e39",
+        "timestamp": 1788635899849
+      },
+      {
+        "executionId": "901f68ac-9acb-4578-9301-0d704936763c",
+        "chatSessionId": "sess_c14195d6-4cc9-4c34-845b-238d72ef8e39",
+        "timestamp": 1788636081613
+      }
+    ],
+    "13.6 Write integration test for recompute + SSE push within budget": [
+      {
+        "executionId": "19cf71e0-3c3a-47ae-9074-ebc19f0d1939",
+        "chatSessionId": "sess_969de1eb-e1ac-4b29-b884-d58d95757c29",
+        "timestamp": 1788636118842
+      },
+      {
+        "executionId": "19cf71e0-3c3a-47ae-9074-ebc19f0d1939",
+        "chatSessionId": "sess_969de1eb-e1ac-4b29-b884-d58d95757c29",
+        "timestamp": 1788636422116
+      }
+    ],
+    "15.3 Write unit tests for the SSE hook status transitions": [
+      {
+        "executionId": "8a605c52-a44d-471a-b775-0b887189bc1a",
+        "chatSessionId": "sess_6d78c0d3-124f-4118-89e0-970ebd7a5d61",
+        "timestamp": 1788636486960
+      },
+      {
+        "executionId": "8a605c52-a44d-471a-b775-0b887189bc1a",
+        "chatSessionId": "sess_6d78c0d3-124f-4118-89e0-970ebd7a5d61",
+        "timestamp": 1788636625118
+      }
+    ],
+    "18.2 Write unit test for selected-view retention across updates": [
+      {
+        "executionId": "317c7c7a-fadd-43af-a160-83ed9cc7d597",
+        "chatSessionId": "sess_8c255a82-3db1-4859-820b-6e8a5174b1e1",
+        "timestamp": 1788636668670
+      },
+      {
+        "executionId": "317c7c7a-fadd-43af-a160-83ed9cc7d597",
+        "chatSessionId": "sess_8c255a82-3db1-4859-820b-6e8a5174b1e1",
+        "timestamp": 1788636836946
+      }
+    ],
+    "19.2 Write end-to-end integration test": [
+      {
+        "executionId": "f0746f93-95c7-4150-be43-29296f7a26f0",
+        "chatSessionId": "sess_802862a1-1cdb-4361-ba72-f5e5f0214831",
+        "timestamp": 1788636864590
+      },
+      {
+        "executionId": "f0746f93-95c7-4150-be43-29296f7a26f0",
+        "chatSessionId": "sess_802862a1-1cdb-4361-ba72-f5e5f0214831",
+        "timestamp": 1788637156595
+      }
+    ],
+    "20. Final checkpoint - full system tests pass": [
+      {
+        "executionId": "79210caf-8f6a-4015-a0c0-11b34b162632",
+        "chatSessionId": "sess_94b8195d-de05-4404-8659-6dc6f93f8ee6",
+        "timestamp": 1788637229428
+      },
+      {
+        "executionId": "79210caf-8f6a-4015-a0c0-11b34b162632",
+        "chatSessionId": "sess_94b8195d-de05-4404-8659-6dc6f93f8ee6",
+        "timestamp": 1788637432023
+      }
+    ]
+  }
+}
