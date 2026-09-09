@@ -912,8 +912,13 @@ th[aria-sort="descending"] .sort-header {
    */
   @page {
     size: A4 portrait;
-    /* top/bottom 12mm, left/right 18mm so the sheet has clear side margins. */
-    margin: 12mm 18mm;
+    /*
+     * `@page` margins are unreliable — Chrome's print dialog "Margins" dropdown
+     * overrides them (and defaults can zero them out). So keep a small vertical
+     * page margin here and enforce the real left/right (and extra top) spacing as
+     * PADDING on each `.print-page` below, which the browser always honors.
+     */
+    margin: 8mm 0;
   }
 
   body {
@@ -953,6 +958,12 @@ th[aria-sort="descending"] .sort-header {
   .print-page {
     break-after: page;
     page-break-after: always;
+    /*
+     * Real left/right (and a little top/bottom) margin, applied as padding on the
+     * content so it holds regardless of the print dialog's margin setting.
+     */
+    padding: 4mm 16mm;
+    box-sizing: border-box;
   }
 
   .print-page:last-child {
