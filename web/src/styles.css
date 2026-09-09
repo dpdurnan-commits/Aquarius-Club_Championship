@@ -315,6 +315,14 @@ button:disabled {
   position: sticky;
   top: 0;
   z-index: 2;
+  /*
+   * Sticky header cells must be opaque, otherwise the body rows scrolling
+   * underneath show through the transparent header and the hole numbers appear
+   * to vanish on vertical scroll (very visible on mobile). This matches the tint
+   * the shared `thead th` rule gives non-sticky headers so the sticky row reads
+   * identically.
+   */
+  background: #eef2f4;
 }
 
 /*
