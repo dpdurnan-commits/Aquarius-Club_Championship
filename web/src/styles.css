@@ -912,7 +912,8 @@ th[aria-sort="descending"] .sort-header {
    */
   @page {
     size: A4 portrait;
-    margin: 12mm;
+    /* top/bottom 12mm, left/right 18mm so the sheet has clear side margins. */
+    margin: 12mm 18mm;
   }
 
   body {
@@ -986,8 +987,9 @@ th[aria-sort="descending"] .sort-header {
   .print-sheet-table th,
   .print-sheet-table td {
     border: 1px solid #000;
-    /* Tall rows give scorers room to hand-write each hole score. */
-    height: 11mm;
+    /* Rows sized so 20 players fit on one A4 page while still giving scorers
+     * room to hand-write each hole score. */
+    height: 10mm;
     text-align: center;
     padding: 0 2mm;
   }

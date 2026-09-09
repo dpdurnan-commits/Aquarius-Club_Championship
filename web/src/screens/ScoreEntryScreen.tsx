@@ -41,7 +41,7 @@ import {
 } from '@ccs/types';
 
 /** Players printed per A4 page. (Print score sheets feature) */
-const PLAYERS_PER_PAGE = 10;
+const PLAYERS_PER_PAGE = 20;
 
 /** The two nine-hole blocks a printed sheet is split into: front and back nine. */
 const NINE_BLOCKS: readonly {
