@@ -580,6 +580,32 @@ tbody tr:nth-child(even) {
   text-overflow: ellipsis;
 }
 
+/*
+ * Column-header labels (Strokes / Stableford / To par, and the Day 2 totals) are
+ * whole words that must stay readable even in a narrow fixed-width column. Under
+ * `table-layout: fixed` the body cells clip with an ellipsis, but the headers
+ * should instead wrap onto multiple lines so the full word always shows — the
+ * longest, "Stableford", is what drove the previous clipping. A slightly smaller
+ * header font and tight line-height keep the wrapped, two-line header compact.
+ */
+.score-table thead th {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+  font-size: 0.72rem;
+  line-height: 1.15;
+}
+
+/* The sortable-header button must wrap with its cell rather than force a single
+ * line, so the label can break across lines to fit the column width. */
+.score-table thead th .sort-header {
+  white-space: normal;
+  text-align: center;
+}
+
 /* The player-name column is the one place a wider, left-aligned cell is wanted;
  * it may wrap so long names stay readable while the numeric columns stay tight. */
 .score-table .player-name {
