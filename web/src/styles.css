@@ -838,20 +838,20 @@ th[aria-sort="descending"] .sort-header {
   }
 
   /*
-   * On phones the score-entry grid must NOT be its own capped, nested scroll
-   * box. When an input is focused and the numeric keyboard opens, mobile
-   * browsers route touch-scroll to the page and mishandle the inner
-   * `overflow: auto` container, so the grid appears frozen while entering a
-   * score. Removing the height cap and inner scroll lets the whole page scroll
-   * naturally (which the browser drives correctly around the keyboard). The
-   * sticky header row and player-name column still pin against the page scroll,
-   * so the scorer keeps their bearings. Horizontal scroll for the 18 hole
-   * columns is preserved via `overflow-x`.
+   * The grid stays a single two-axis scroll container on phones — the 18 hole
+   * columns need horizontal scroll, and horizontal scroll cannot be split from
+   * vertical (`overflow-x: auto` with `overflow-y: visible` is invalid and the
+   * browser silently promotes `visible` to `auto`, which broke horizontal
+   * scrolling with the keyboard open). So keep `overflow: auto` on both axes and
+   * only shrink the height with the keyboard via `dvh` (set on the base rule).
+   * `touch-action: pan-x pan-y` explicitly tells the browser both drag
+   * directions are ours, so a focused input doesn't let the browser capture the
+   * horizontal gesture. A small bottom scroll-padding keeps the focused cell
+   * clear of the keyboard.
    */
   .score-entry-grid-wrap {
-    max-height: none;
-    overflow-x: auto;
-    overflow-y: visible;
+    touch-action: pan-x pan-y;
+    scroll-padding-bottom: 4rem;
   }
 }
 
