@@ -39,6 +39,51 @@ import {
   type Player,
   type ScoresView,
 } from '@ccs/types';
+
+/** Players printed per A4 page. (Print score sheets feature) */
+const PLAYERS_PER_PAGE = 10;
+
+/** The two nine-hole blocks a printed sheet is split into: front and back nine. */
+const NINE_BLOCKS: readonly {
+  readonly label: string;
+  readonly ordinals: readonly HoleOrdinal[];
+}[] = [
+  { label: 'Holes 1–9', ordinals: HOLE_ORDINALS.slice(0, 9) },
+  { label: 'Holes 10–18', ordinals: HOLE_ORDINALS.slice(9, 18) },
+];
+
+/** Split an ordered roster into fixed-size chunks (10 players per page). */
+function chunk<T>(items: readonly T[], size: number): T[][] {
+  const chunks: T[][] = [];
+  for (let i = 0; i < items.length; i += size) {
+    chunks.push(items.slice(i, i + size));
+  }
+  return chunks;
+}
+
+/**
+ * Build the ordered list of printable pages for a roster.
+ *
+ * The page order matches the requested workflow: every front-nine page first
+ * (players 1–10, then 11–20, … for holes 1–9), then every back-nine page
+ * (players 1–10, then 11–20, … for holes 10–18). Players keep the entry-grid
+ * order they arrive in.
+ */
+function buildPrintPages(
+  players: readonly Player[],
+): { block: (typeof NINE_BLOCKS)[number]; players: readonly Player[] }[] {
+  const playerChunks = chunk(players, PLAYERS_PER_PAGE);
+  const pages: {
+    block: (typeof NINE_BLOCKS)[number];
+    players: readonly Player[];
+  }[] = [];
+  for (const block of NINE_BLOCKS) {
+    for (const group of playerChunks) {
+      pages.push({ block, players: group });
+    }
+  }
+  return pages;
+}
 import {
   apiClient,
   CLEAR_TOKEN,
@@ -135,6 +180,11 @@ export function ScoreEntryScreen({
   // The day being scored; drives both the row order and which scores load.
   const [day, setDay] = useState<Day>(1);
 
+  // Whether Day 1 has been completed. Gates the Day 2 print action (Day 2 score
+  // sheets cannot be printed until Day 1 is complete). Read from the server on
+  // load so it is authoritative, not merely optimistic.
+  const [day1Complete, setDay1Complete] = useState(false);
+
   // Live edited text per cell. A cell is only present here once the scorer has
   // typed into it; its absence means "show the recorded value".
   const [drafts, setDrafts] = useState<Partial<Record<CellKey, string>>>({});
@@ -150,9 +200,10 @@ export function ScoreEntryScreen({
   /** Load the roster and the given day's view snapshot together. */
   const load = useCallback(
     async (targetDay: Day): Promise<void> => {
-      const [playersResult, viewResult] = await Promise.all([
+      const [playersResult, viewResult, stateResult] = await Promise.all([
         client.getPlayers(),
         targetDay === 1 ? client.getDay1View() : client.getDay2View(),
+        client.getCompetitionState(),
       ]);
       if (playersResult.ok) {
         setPlayers(playersResult.value);
@@ -162,6 +213,9 @@ export function ScoreEntryScreen({
       }
       if (viewResult.ok) {
         setView(viewResult.value);
+      }
+      if (stateResult.ok) {
+        setDay1Complete(stateResult.value.day1Complete);
       }
     },
     [client],
@@ -241,6 +295,26 @@ export function ScoreEntryScreen({
       return sb - sa;
     });
   }, [players, day, view]);
+
+  /**
+   * The paginated print pages for the current roster order: front-nine pages
+   * (10 players each) first, then back-nine pages. Recomputed from the same
+   * `rows` the grid uses, so the printed order matches the entry grid exactly.
+   */
+  const printPages = useMemo(() => buildPrintPages(rows), [rows]);
+
+  /**
+   * Whether printing is allowed for the selected day. Day 1 can always be
+   * printed (given players exist); Day 2 is blocked until Day 1 is complete,
+   * mirroring the rule that gates Day 2 scoring. (Print score sheets feature)
+   */
+  const canPrint = rows.length > 0 && (day === 1 || day1Complete);
+
+  /** Open the browser print dialog for the print-only score sheets. */
+  const handlePrint = useCallback((): void => {
+    if (!canPrint) return;
+    window.print();
+  }, [canPrint]);
 
   /** The set of drafts that differ from the recorded value (the pending edits). */
   const pendingEdits = useMemo(() => {
@@ -416,6 +490,24 @@ export function ScoreEntryScreen({
                   ? 'Submit scores'
                   : `Submit ${pendingCount} score${pendingCount === 1 ? '' : 's'}`}
             </button>
+            <button
+              type="button"
+              className="print-button"
+              onClick={handlePrint}
+              disabled={!canPrint}
+              title={
+                day === 2 && !day1Complete
+                  ? 'Day 2 score sheets can only be printed once Day 1 is complete.'
+                  : undefined
+              }
+            >
+              Print score sheets
+            </button>
+            {day === 2 && !day1Complete && (
+              <span className="print-gate-hint">
+                Day 2 sheets print once Day 1 is complete.
+              </span>
+            )}
             {summary && (
               <span className="field-confirmation" role="status">
                 {summary}
@@ -480,6 +572,51 @@ export function ScoreEntryScreen({
               </tbody>
             </table>
           </form>
+
+          {/*
+            Print-only score sheets. Hidden on screen, shown only when printing
+            (see the `@media print` rules). Ordered front-nine pages first then
+            back-nine pages, 10 players per page, following the on-screen row
+            order for the selected day. Each cell is a blank box for scorers to
+            fill in by hand on the course.
+          */}
+          <div className="print-scoresheets" aria-hidden="true">
+            {printPages.map((page, pageIndex) => (
+              <div className="print-page" key={`${page.block.label}-${pageIndex}`}>
+                <div className="print-page-header">
+                  <h3>Club Championship — Day {day} Score Sheet</h3>
+                  <span className="print-page-block">{page.block.label}</span>
+                </div>
+                <table className="print-sheet-table">
+                  <thead>
+                    <tr>
+                      <th className="print-col-player">Player</th>
+                      <th className="print-col-hcp">HCP</th>
+                      {page.block.ordinals.map((ordinal) => (
+                        <th key={ordinal} className="print-col-hole">
+                          {ordinal}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {page.players.map((player) => (
+                      <tr key={player.id}>
+                        <td className="print-col-player">{player.name}</td>
+                        <td className="print-col-hcp">
+                          {(day === 1 ? player.handicapDay1 : player.handicapDay2) ??
+                            ''}
+                        </td>
+                        {page.block.ordinals.map((ordinal) => (
+                          <td key={ordinal} className="print-col-hole" />
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ))}
+          </div>
         </>
       )}
     </section>

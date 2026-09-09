@@ -873,3 +873,139 @@ th[aria-sort="descending"] .sort-header {
     min-width: 900px;
   }
 }
+
+/* ---- Print score sheets ---------------------------------------------- */
+
+/*
+ * The printable score sheets are built into the DOM but hidden on screen; they
+ * are revealed only when printing (see the `@media print` block). This keeps the
+ * print layout entirely CSS-driven — no separate window or document is opened.
+ */
+.print-scoresheets {
+  display: none;
+}
+
+/* The Print button sits beside Submit in the actions row. */
+.print-button {
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary);
+}
+
+.print-button:disabled {
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+/* Hint explaining why Day 2 printing is unavailable until Day 1 completes. */
+.print-gate-hint {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  align-self: center;
+}
+
+@media print {
+  /*
+   * Print only the score sheets. Everything else — app header/nav, the day
+   * selector, the action buttons, and the interactive entry grid — is hidden so
+   * the printout is just the blank sheets. `@page` sets A4 with a modest margin.
+   */
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .app-shell > header,
+  .score-entry > h2,
+  .score-entry > p,
+  .day-selector,
+  .score-entry-actions,
+  .score-entry-grid-wrap {
+    display: none !important;
+  }
+
+  /* Strip the on-screen card chrome so the sheets sit flush on the page. */
+  .app-shell,
+  .app-shell > main,
+  .score-entry {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .print-scoresheets {
+    display: block;
+  }
+
+  /*
+   * One sheet per page: each `.print-page` is forced onto its own page. The last
+   * one has no forced break so it does not emit a trailing blank page.
+   */
+  .print-page {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .print-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .print-page-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 6mm;
+  }
+
+  .print-page-header h3 {
+    margin: 0;
+    font-size: 14pt;
+  }
+
+  .print-page-block {
+    font-size: 12pt;
+    font-weight: 700;
+  }
+
+  .print-sheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 11pt;
+  }
+
+  .print-sheet-table th,
+  .print-sheet-table td {
+    border: 1px solid #000;
+    /* Tall rows give scorers room to hand-write each hole score. */
+    height: 11mm;
+    text-align: center;
+    padding: 0 2mm;
+  }
+
+  .print-sheet-table thead th {
+    background: #eee;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    height: 8mm;
+  }
+
+  /* The player name is the one wide, left-aligned column. */
+  .print-col-player {
+    width: 32mm;
+    text-align: left !important;
+  }
+
+  .print-col-hcp {
+    width: 12mm;
+  }
+}

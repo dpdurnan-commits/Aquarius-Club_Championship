@@ -30,6 +30,7 @@ import { scoreRoutes } from './routes/score-routes.js';
 import { viewRoutes } from './routes/view-routes.js';
 import { eventsRoutes } from './routes/events-routes.js';
 import { resetRoutes } from './routes/reset-routes.js';
+import { competitionRoutes } from './routes/competition-routes.js';
 
 /**
  * Fastify instances are decorated with the wired {@link AppContext}, so every
@@ -81,6 +82,9 @@ async function registerApiRoutes(fastify: FastifyInstance): Promise<void> {
   // `fastify.appContext` for the service/assembler it delegates to.
   await fastify.register(scoreRoutes);
   await fastify.register(viewRoutes);
+  // Competition-state read (day1Complete + cutValue), used by the Score Entry
+  // screen to gate Day 2 print on Day 1 completion.
+  await fastify.register(competitionRoutes);
   // Real-time SSE stream of broker events (task 13.4). Reads
   // `fastify.appContext.broker` and streams framed events with Last-Event-ID
   // replay. (Requirement 10.1, 10.2, 10.3, 10.5)

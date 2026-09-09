@@ -26,6 +26,7 @@ import {
   err,
   ok,
   type CellState,
+  type CompetitionState,
   type Day,
   type Day1View,
   type Day2View,
@@ -281,6 +282,15 @@ export class ApiClient {
   /** `GET /api/view/day2` — the assembled Day 2 snapshot. (Requirement 9) */
   getDay2View(): Promise<Result<Day2View>> {
     return this.request<Day2View>('GET', '/view/day2');
+  }
+
+  /**
+   * `GET /api/competition/state` — the singleton competition state
+   * (`day1Complete` + `cutValue`). Read on load so the Score Entry screen can
+   * gate the Day 2 print action on Day 1 completion.
+   */
+  getCompetitionState(): Promise<Result<CompetitionState>> {
+    return this.request<CompetitionState>('GET', '/competition/state');
   }
 
   /**
