@@ -299,7 +299,20 @@ button:disabled {
  */
 .score-entry-grid-wrap {
   overflow: auto;
+  /*
+   * Cap the grid height so it scrolls within a viewport-relative box. On mobile,
+   * `vh` is based on the *full* viewport and ignores the on-screen keyboard, so
+   * when the numeric pad opens the scroll box extends behind it and scrolling
+   * appears to stop. `dvh` (dynamic viewport height) tracks the *currently
+   * visible* area — it shrinks when the keyboard is up — so the grid stays
+   * scrollable with the pad open. `vh` is kept first as a fallback for browsers
+   * without `dvh` support. `-webkit-overflow-scrolling: touch` keeps momentum
+   * scrolling smooth on iOS.
+   */
   max-height: 70vh;
+  max-height: 70dvh;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
 }
