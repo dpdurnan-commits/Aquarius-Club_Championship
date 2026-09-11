@@ -962,9 +962,18 @@ th[aria-sort="descending"] .sort-header {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    width: 100%;
+    /*
+     * Size the sheet to A3 *landscape* dimensions explicitly (420mm × 297mm)
+     * rather than `width: 100%`. Chrome ignores the `@page { size }` descriptor,
+     * so relying on it left the content squeezed onto a portrait page. Fixing the
+     * physical dimensions here lays the two A4-portrait halves (210mm each) out
+     * correctly whenever A3 + Landscape is chosen in the print dialog.
+     */
+    width: 420mm;
+    height: 297mm;
     break-after: page;
     page-break-after: always;
+    overflow: hidden;
   }
 
   .print-sheet:last-child {
@@ -977,7 +986,10 @@ th[aria-sort="descending"] .sort-header {
    * (top/bottom and outer/inner gutter) regardless of the print dialog setting.
    */
   .print-half {
-    width: 50%;
+    /* Each half is exactly one A4-portrait column (210mm) of the A3 landscape
+     * sheet. Fixed width (not 50%) keeps the two halves true A4 size. */
+    width: 210mm;
+    height: 297mm;
     box-sizing: border-box;
     padding: 10mm 12mm;
   }
