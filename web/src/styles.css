@@ -760,9 +760,41 @@ th[aria-sort="descending"] .sort-header {
 .viewing-display-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* Heading, inline day selector, and status on one compact row so the table
+   * sits higher and more players are visible. */
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+/* Tighten the top of the Viewing Display so the leaderboard starts higher. */
+.viewing-display {
+  padding-top: var(--space-3);
+}
+
+/* Smaller on-page heading (the nav tab wording is unaffected). */
+.viewing-display-header #viewing-display-heading {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+/* The day selector rendered inline in the header: compact, beside the heading
+ * rather than on its own row. Scoped under the header so it overrides the base
+ * `.day-selector` margin regardless of source order. Push the connection status
+ * to the far right. */
+.viewing-display-header .day-selector--inline {
+  margin: 0;
+}
+
+.viewing-display-header .connection-status {
+  margin-left: auto;
+}
+
+.viewing-display-header .day-selector--inline .day-tab {
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.85rem;
 }
 
 .connection-status {

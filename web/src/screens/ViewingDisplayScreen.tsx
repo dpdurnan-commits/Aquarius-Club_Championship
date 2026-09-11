@@ -146,6 +146,26 @@ export function ViewingDisplayScreen({
     <section aria-labelledby="viewing-display-heading" className="viewing-display">
       <div className="viewing-display-header">
         <h2 id="viewing-display-heading">Viewing Display</h2>
+
+        <div
+          className="day-selector day-selector--inline"
+          role="tablist"
+          aria-label="Select day to view"
+        >
+          {DAYS.map((d) => (
+            <button
+              key={d}
+              type="button"
+              role="tab"
+              aria-selected={day === d}
+              className={day === d ? 'day-tab day-tab--active' : 'day-tab'}
+              onClick={() => setDay(d)}
+            >
+              Day {d}
+            </button>
+          ))}
+        </div>
+
         <span
           className={`connection-status connection-status--${status}`}
           role="status"
@@ -153,25 +173,6 @@ export function ViewingDisplayScreen({
         >
           {STATUS_LABEL[status]}
         </span>
-      </div>
-
-      <div
-        className="day-selector"
-        role="tablist"
-        aria-label="Select day to view"
-      >
-        {DAYS.map((d) => (
-          <button
-            key={d}
-            type="button"
-            role="tab"
-            aria-selected={day === d}
-            className={day === d ? 'day-tab day-tab--active' : 'day-tab'}
-            onClick={() => setDay(d)}
-          >
-            Day {d}
-          </button>
-        ))}
       </div>
 
       {loadError !== null && (
