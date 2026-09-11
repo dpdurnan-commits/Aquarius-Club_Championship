@@ -40,19 +40,36 @@ import {
   type ScoresView,
 } from '@ccs/types';
 
-/** Players printed per A4 page. (Print score sheets feature) */
-const PLAYERS_PER_PAGE = 20;
+/**
+ * Players printed per A3 sheet. One A3 landscape sheet holds a single group of
+ * up to this many players: the left half is that group with holes 1–9, the
+ * right half is the SAME group with holes 10–18, so the sheet is a complete
+ * 18-hole card for those players. (Print score sheets feature)
+ */
+const PLAYERS_PER_SHEET = 24;
 
-/** The two nine-hole blocks a printed sheet is split into: front and back nine. */
-const NINE_BLOCKS: readonly {
+/** A nine-hole block on one half of the A3 sheet: front nine or back nine. */
+interface NineBlock {
   readonly label: string;
   readonly ordinals: readonly HoleOrdinal[];
-}[] = [
-  { label: 'Holes 1–9', ordinals: HOLE_ORDINALS.slice(0, 9) },
-  { label: 'Holes 10–18', ordinals: HOLE_ORDINALS.slice(9, 18) },
-];
+}
 
-/** Split an ordered roster into fixed-size chunks (10 players per page). */
+/** The front nine (left half) and back nine (right half) of each A3 sheet. */
+const FRONT_NINE: NineBlock = {
+  label: 'Holes 1–9',
+  ordinals: HOLE_ORDINALS.slice(0, 9),
+};
+const BACK_NINE: NineBlock = {
+  label: 'Holes 10–18',
+  ordinals: HOLE_ORDINALS.slice(9, 18),
+};
+
+/** One printable A3 sheet: a group of players shown across both nine-hole halves. */
+interface PrintSheet {
+  readonly players: readonly Player[];
+}
+
+/** Split an ordered roster into fixed-size chunks (one chunk per A3 sheet). */
 function chunk<T>(items: readonly T[], size: number): T[][] {
   const chunks: T[][] = [];
   for (let i = 0; i < items.length; i += size) {
@@ -62,27 +79,14 @@ function chunk<T>(items: readonly T[], size: number): T[][] {
 }
 
 /**
- * Build the ordered list of printable pages for a roster.
- *
- * The page order matches the requested workflow: every front-nine page first
- * (players 1–10, then 11–20, … for holes 1–9), then every back-nine page
- * (players 1–10, then 11–20, … for holes 10–18). Players keep the entry-grid
- * order they arrive in.
+ * Build the ordered list of A3 sheets for a roster. Players are grouped into
+ * blocks of {@link PLAYERS_PER_SHEET} in entry-grid order; each block becomes
+ * one A3 sheet whose left half is holes 1–9 and right half is holes 10–18 for
+ * that same block of players. So sheet 1 = players 1–24, sheet 2 = players
+ * 25–48, and so on.
  */
-function buildPrintPages(
-  players: readonly Player[],
-): { block: (typeof NINE_BLOCKS)[number]; players: readonly Player[] }[] {
-  const playerChunks = chunk(players, PLAYERS_PER_PAGE);
-  const pages: {
-    block: (typeof NINE_BLOCKS)[number];
-    players: readonly Player[];
-  }[] = [];
-  for (const block of NINE_BLOCKS) {
-    for (const group of playerChunks) {
-      pages.push({ block, players: group });
-    }
-  }
-  return pages;
+function buildPrintSheets(players: readonly Player[]): PrintSheet[] {
+  return chunk(players, PLAYERS_PER_SHEET).map((group) => ({ players: group }));
 }
 import {
   apiClient,
@@ -297,11 +301,11 @@ export function ScoreEntryScreen({
   }, [players, day, view]);
 
   /**
-   * The paginated print pages for the current roster order: front-nine pages
-   * (10 players each) first, then back-nine pages. Recomputed from the same
-   * `rows` the grid uses, so the printed order matches the entry grid exactly.
+   * The A3 print sheets for the current roster: groups of 24 players (in the
+   * same order as the on-screen grid), each sheet showing holes 1–9 on its left
+   * half and holes 10–18 on its right half.
    */
-  const printPages = useMemo(() => buildPrintPages(rows), [rows]);
+  const printSheets = useMemo(() => buildPrintSheets(rows), [rows]);
 
   /**
    * Whether printing is allowed for the selected day. Day 1 can always be
@@ -575,45 +579,51 @@ export function ScoreEntryScreen({
 
           {/*
             Print-only score sheets. Hidden on screen, shown only when printing
-            (see the `@media print` rules). Ordered front-nine pages first then
-            back-nine pages, 10 players per page, following the on-screen row
-            order for the selected day. Each cell is a blank box for scorers to
-            fill in by hand on the course.
+            (see the `@media print` rules). Each `.print-sheet` is one A3
+            landscape page holding up to 24 players (in the on-screen row order):
+            the left half is holes 1–9 and the right half is holes 10–18 for the
+            same players, so a single A3 sheet is that group's complete 18-hole
+            card. Each cell is a blank box for scorers to fill in by hand.
           */}
           <div className="print-scoresheets" aria-hidden="true">
-            {printPages.map((page, pageIndex) => (
-              <div className="print-page" key={`${page.block.label}-${pageIndex}`}>
-                <div className="print-page-header">
-                  <h3>Club Championship — Day {day} Score Sheet</h3>
-                  <span className="print-page-block">{page.block.label}</span>
-                </div>
-                <table className="print-sheet-table">
-                  <thead>
-                    <tr>
-                      <th className="print-col-player">Player</th>
-                      <th className="print-col-hcp">HCP</th>
-                      {page.block.ordinals.map((ordinal) => (
-                        <th key={ordinal} className="print-col-hole">
-                          {ordinal}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {page.players.map((player) => (
-                      <tr key={player.id}>
-                        <td className="print-col-player">{player.name}</td>
-                        <td className="print-col-hcp">
-                          {(day === 1 ? player.handicapDay1 : player.handicapDay2) ??
-                            ''}
-                        </td>
-                        {page.block.ordinals.map((ordinal) => (
-                          <td key={ordinal} className="print-col-hole" />
+            {printSheets.map((sheet, sheetIndex) => (
+              <div className="print-sheet" key={`sheet-${sheetIndex}`}>
+                {[FRONT_NINE, BACK_NINE].map((block) => (
+                  <div className="print-half" key={block.label}>
+                    <div className="print-page-header">
+                      <h3>Club Championship — Day {day}</h3>
+                      <span className="print-page-block">{block.label}</span>
+                    </div>
+                    <table className="print-sheet-table">
+                      <thead>
+                        <tr>
+                          <th className="print-col-player">Player</th>
+                          <th className="print-col-hcp">HCP</th>
+                          {block.ordinals.map((ordinal) => (
+                            <th key={ordinal} className="print-col-hole">
+                              {ordinal}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {sheet.players.map((player) => (
+                          <tr key={player.id}>
+                            <td className="print-col-player">{player.name}</td>
+                            <td className="print-col-hcp">
+                              {(day === 1
+                                ? player.handicapDay1
+                                : player.handicapDay2) ?? ''}
+                            </td>
+                            {block.ordinals.map((ordinal) => (
+                              <td key={ordinal} className="print-col-hole" />
+                            ))}
+                          </tr>
                         ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
               </div>
             ))}
           </div>

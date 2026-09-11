@@ -911,14 +911,15 @@ th[aria-sort="descending"] .sort-header {
    * the printout is just the blank sheets. `@page` sets A4 with a modest margin.
    */
   @page {
-    size: A4 portrait;
     /*
-     * `@page` margins are unreliable — Chrome's print dialog "Margins" dropdown
-     * overrides them (and defaults can zero them out). So keep a small vertical
-     * page margin here and enforce the real left/right (and extra top) spacing as
-     * PADDING on each `.print-page` below, which the browser always honors.
+     * A3 landscape: each sheet is two A4-portrait halves side by side. The left
+     * half is holes 1–9, the right half is holes 10–18, for the same group of
+     * players. `@page` margins are unreliable (Chrome's print dialog "Margins"
+     * dropdown overrides them), so keep them at 0 here and enforce the real
+     * spacing as padding on each half below, which the browser always honors.
      */
-    margin: 8mm 0;
+    size: A3 landscape;
+    margin: 0;
   }
 
   body {
@@ -952,35 +953,45 @@ th[aria-sort="descending"] .sort-header {
   }
 
   /*
-   * One sheet per page: each `.print-page` is forced onto its own page. The last
-   * one has no forced break so it does not emit a trailing blank page.
+   * One A3 sheet per page. The two halves sit side by side across the landscape
+   * page; each half fills 50% of the width (one A4 portrait column). A forced
+   * page break after each sheet keeps groups on their own A3 page; the last one
+   * has no forced break so it does not emit a trailing blank page.
    */
-  .print-page {
+  .print-sheet {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
     break-after: page;
     page-break-after: always;
-    /*
-     * Real left/right (and a little top/bottom) margin, applied as padding on the
-     * content so it holds regardless of the print dialog's margin setting.
-     */
-    padding: 4mm 16mm;
-    box-sizing: border-box;
   }
 
-  .print-page:last-child {
+  .print-sheet:last-child {
     break-after: auto;
     page-break-after: auto;
+  }
+
+  /*
+   * Each half is one A4-portrait column. Padding provides the real page margins
+   * (top/bottom and outer/inner gutter) regardless of the print dialog setting.
+   */
+  .print-half {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10mm 12mm;
   }
 
   .print-page-header {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 6mm;
+    margin-bottom: 5mm;
   }
 
   .print-page-header h3 {
     margin: 0;
-    font-size: 14pt;
+    font-size: 13pt;
   }
 
   .print-page-block {
@@ -992,17 +1003,17 @@ th[aria-sort="descending"] .sort-header {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-    font-size: 11pt;
+    font-size: 10pt;
   }
 
   .print-sheet-table th,
   .print-sheet-table td {
     border: 1px solid #000;
-    /* Rows sized so 20 players fit on one A4 page while still giving scorers
-     * room to hand-write each hole score. */
-    height: 10mm;
+    /* Rows sized so 24 players fit on one A4-portrait half while still giving
+     * scorers room to hand-write each hole score. */
+    height: 9.3mm;
     text-align: center;
-    padding: 0 2mm;
+    padding: 0 1.5mm;
   }
 
   .print-sheet-table thead th {
@@ -1014,7 +1025,7 @@ th[aria-sort="descending"] .sort-header {
 
   /* The player name is the one wide, left-aligned column. */
   .print-col-player {
-    width: 32mm;
+    width: 34mm;
     text-align: left !important;
   }
 
