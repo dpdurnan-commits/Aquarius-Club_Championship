@@ -973,7 +973,6 @@ th[aria-sort="descending"] .sort-header {
     height: 297mm;
     break-after: page;
     page-break-after: always;
-    overflow: hidden;
   }
 
   .print-sheet:last-child {
@@ -987,23 +986,27 @@ th[aria-sort="descending"] .sort-header {
    */
   .print-half {
     /* Each half is exactly one A4-portrait column (210mm) of the A3 landscape
-     * sheet. Fixed width (not 50%) keeps the two halves true A4 size. */
+     * sheet. Fixed width (not 50%) keeps the two halves true A4 size. The table
+     * must not break across the fold, so keep the half together on its page. */
     width: 210mm;
     height: 297mm;
     box-sizing: border-box;
-    padding: 10mm 12mm;
+    padding: 8mm 10mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    overflow: hidden;
   }
 
   .print-page-header {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 5mm;
+    margin-bottom: 3mm;
   }
 
   .print-page-header h3 {
     margin: 0;
-    font-size: 13pt;
+    font-size: 12pt;
   }
 
   .print-page-block {
@@ -1021,9 +1024,10 @@ th[aria-sort="descending"] .sort-header {
   .print-sheet-table th,
   .print-sheet-table td {
     border: 1px solid #000;
-    /* Rows sized so 24 players fit on one A4-portrait half while still giving
-     * scorers room to hand-write each hole score. */
-    height: 9.3mm;
+    /* Rows sized so all 24 players fit on one A4-portrait half (with headroom)
+     * while still giving scorers room to hand-write each hole score. */
+    height: 9mm;
+    line-height: 1;
     text-align: center;
     padding: 0 1.5mm;
   }
@@ -1032,7 +1036,7 @@ th[aria-sort="descending"] .sort-header {
     background: #eee;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    height: 8mm;
+    height: 7mm;
   }
 
   /* The player name is the one wide, left-aligned column. */
